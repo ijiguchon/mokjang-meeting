@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목장모임 - 시애틀지구촌교회</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #f5f3f0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff8a3d 0%, #ff6b35 100%);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            box-shadow: inset 0 -10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .hero h1 {
+            font-size: 3.8em;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.6em;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+        
+        .hero .tagline {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-top: 25px;
+            font-style: italic;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Section */
+        section {
+            padding: 80px 20px;
+        }
+        
+        .section-title {
+            font-size: 2.8em;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 25px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b35, #ffa500);
+            border-radius: 3px;
+        }
+        
+        /* What is Section */
+        .what-is {
+            background: linear-gradient(135deg, #fff9f0 0%, #ffe8d6 100%);
+            border-top: 4px solid #ff8a3d;
+            border-bottom: 4px solid #ff8a3d;
+        }
+        
+        .intro-box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 900px;
+            margin: 0 auto 50px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 8px solid #ff6b35;
+        }
+        
+        .intro-box p {
+            font-size: 1.4em;
+            line-height: 2.2;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, #ffd93d 60%);
+            font-weight: 700;
+            color: #ff6b35;
+            font-size: 1.1em;
+            padding: 0 5px;
+        }
+        
+        .who-should-come {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .who-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-top: 5px solid #ff8a3d;
+        }
+        
+        .who-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        
+        .who-card .emoji {
+            font-size: 3.5em;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .who-card p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        /* 5W Section */
+        .five-w-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .w-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .w-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            gap: 40px;
+        }
+        
+        .w-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .w-icon-box {
+            flex-shrink: 0;
+            width: 180px;
+            height: 180px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+        }
+        
+        .w-item:hover .w-icon-box {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .w-icon-box .emoji {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+        
+        .w-icon-box .w-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #ff6b35;
+        }
+        
+        .w-content {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .w-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        
+        .w-content h3 {
+            color: #ff6b35;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .w-content .quote {
+            font-size: 1.4em;
+            font-style: italic;
+            color: #2c3e50;
+            line-height: 2;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #fff9f0;
+            border-left: 5px solid #ff8a3d;
+            border-radius: 10px;
+        }
+        
+        .w-content p {
+            font-size: 1.2em;
+            line-height: 2;
+            color: #555;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            border-left: 8px solid #28a745;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 5em;
+            color: #e8f5e9;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-card p {
+            font-size: 1.2em;
+            color: #495057;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 2;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-card .author {
+            font-weight: 700;
+            color: #28a745;
+            font-style: normal;
+            font-size: 1.2em;
+        }
+        
+        /* FAQ */
+        .faq {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .faq-question {
+            padding: 26px;
+            font-weight: 700;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            font-size: 1.3em;
+        }
+        
+        .faq-question::before {
+            content: "Q. ";
+            color: #9c27b0;
+            font-weight: 800;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .faq-answer {
+            padding: 26px;
+            color: #495057;
+            font-size: 1.2em;
+            line-height: 2;
+        }
+        
+        .faq-answer::before {
+            content: "→ ";
+            color: #9c27b0;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8a3d 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .cta-section h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 1.4em;
+            margin-bottom: 50px;
+            line-height: 2;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 22px 50px;
+            background: white;
+            color: #ff6b35;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.3em;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        .cta-btn:hover {
+            background: #ffd700;
+            color: #ff6b35;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.3em;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+            
+            .w-item {
+                flex-direction: column !important;
+                text-align: center;
+            }
+            
+            .w-icon-box {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-btn {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <div class="hero">
+        <div class="container">
+            <h1>목장모임</h1>
+            <p class="subtitle">매주 만나는 따뜻한 2시간</p>
+            <p class="tagline">함께 밥 먹고, 이야기 나누고, 서로를 위해 기도하는 시간</p>
+        </div>
+    </div>
+
+    <!-- What is -->
+    <section class="what-is">
+        <div class="container">
+            <h2 class="section-title">목장모임이란?</h2>
+            
+            <div class="intro-box">
+                <p>
+                    목장모임은 <span class="highlight">3-4가정</span>이 매주 한 집에 모여<br>
+                    따뜻한 밥을 함께 먹고, 일주일 동안의 <span class="highlight">진짜 이야기</span>를 나누며,<br>
+                    서로를 위해 기도하는 <span class="highlight">작은 가족</span> 같은 모임입니다.
+                </p>
+                <p style="margin-top: 25px; font-size: 1.3em; color: #ff6b35;">
+                    교회 건물이 아닌 <strong>따뜻한 가정집</strong>에서,<br>
+                    프로그램이 아닌 <strong>진솔한 관계</strong>로,<br>
+                    일요일뿐 아닌 <strong>일상에서</strong> 만납니다.
+                </p>
+            </div>
+            
+            <h3 style="text-align: center; font-size: 2em; color: #2c3e50; margin-bottom: 30px;">
+                이런 분들께 좋습니다
+            </h3>
+            
+            <div class="who-should-come">
+                <div class="who-card">
+                    <span class="emoji">😊</span>
+                    <p><strong>시애틀 생활이<br>외로우신 분</strong></p>
+                </div>
+                
+                <div class="who-card">
+                    <span class="emoji">🤝</span>
+                    <p><strong>진짜 친구를<br>찾으시는 분</strong></p>
+                </div>
+                
+                <div class="who-card">
+                    <span class="emoji">💭</span>
+                    <p><strong>고민을 나눌<br>사람이 필요한 분</strong></p>
+                </div>
+                
+                <div class="who-card">
+                    <span class="emoji">🌱</span>
+                    <p><strong>신앙생활을<br>시작하고 싶으신 분</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5W -->
+    <section class="five-w-section">
+        <div class="container">
+            <h2 class="section-title">목장모임 2시간, 이렇게 흘러갑니다</h2>
+            
+            <div class="w-container">
+                <!-- Welcome -->
+                <div class="w-item">
+                    <div class="w-icon-box">
+                        <span class="emoji">🤗</span>
+                        <span class="w-name">Welcome</span>
+                    </div>
+                    <div class="w-content">
+                        <h3>환영 - 따뜻하게 맞이합니다</h3>
+                        <div class="quote">
+                            "집에 초대받은 것 같아요.<br>
+                            따뜻한 밥 냄새와 웃음소리가 있어요."
+                        </div>
+                        <p>
+                            문을 열면 반갑게 맞아주는 얼굴들이 있습니다. 
+                            각 가정이 준비한 음식을 나누며 한 주간의 이야기를 시작합니다. 
+                            아무것도 준비 안 해 오셔도 괜찮아요. 함께 있는 것만으로 충분합니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Worship -->
+                <div class="w-item">
+                    <div class="w-icon-box">
+                        <span class="emoji">🎵</span>
+                        <span class="w-name">Worship</span>
+                    </div>
+                    <div class="w-content">
+                        <h3>예배 - 함께 노래합니다</h3>
+                        <div class="quote">
+                            "노래를 잘 못해도 괜찮아요.<br>
+                            함께 부르면서 마음이 편안해집니다."
+                        </div>
+                        <p>
+                            찬송가든 찬양이든 함께 부릅니다. 
+                            노래를 잘하지 못해도, 가사를 몰라도 괜찮아요. 
+                            그저 함께 있으며 마음을 여는 시간입니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Word -->
+                <div class="w-item">
+                    <div class="w-icon-box">
+                        <span class="emoji">📖</span>
+                        <span class="w-name">Word</span>
+                    </div>
+                    <div class="w-content">
+                        <h3>말씀 - 삶과 연결합니다</h3>
+                        <div class="quote">
+                            "주일 설교를 일상에서 어떻게 적용했는지<br>
+                            간단히 나눠요."
+                        </div>
+                        <p>
+                            어렵고 복잡한 성경공부가 아닙니다. 
+                            주일에 들은 설교가 내 삶에서 어떤 의미였는지, 
+                            무엇을 느꼈는지 편하게 이야기합니다. 20분 정도만 진행합니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Work -->
+                <div class="w-item">
+                    <div class="w-icon-box">
+                        <span class="emoji">💬</span>
+                        <span class="w-name">Work</span>
+                    </div>
+                    <div class="w-content">
+                        <h3>삶나눔 - 진짜 이야기를 합니다 ⭐</h3>
+                        <div class="quote">
+                            "진짜 나의 이야기를 할 수 있어요.<br>
+                            판단 없이 들어주고, 함께 웃고 울어줍니다."
+                        </div>
+                        <p>
+                            <strong>목장모임의 하이라이트입니다.</strong> 
+                            "지난주에 감사했던 일을 나눠주실래요?" 
+                            이 질문으로 시작합니다. 
+                            기쁜 일도, 힘든 일도, 고민도 있는 그대로 나눕니다. 
+                            조언이나 해결책을 강요하지 않습니다. 
+                            그저 들어주고, 공감해주고, 함께합니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Witness -->
+                <div class="w-item">
+                    <div class="w-icon-box">
+                        <span class="emoji">🌍</span>
+                        <span class="w-name">Witness</span>
+                    </div>
+                    <div class="w-content">
+                        <h3>선교 - 세상을 향합니다</h3>
+                        <div class="quote">
+                            "우리만의 모임이 아니에요.<br>
+                            세상을 향한 꿈을 꿉니다."
+                        </div>
+                        <p>
+                            서로만 바라보지 않습니다. 
+                            선교사들을 위해, 아직 하나님을 모르는 친구들을 위해 기도합니다. 
+                            작은 모임이지만 큰 비전을 품고 마무리합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">목장모임을 경험한 분들</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>
+                        처음에는 어색했어요. 그런데 몇 주 지나니까 이 사람들이 가족처럼 느껴지더라고요. 
+                        이제는 목장모임 없는 일주일은 상상이 안 돼요. 
+                        여기서 제 진짜 모습을 보여줄 수 있어요.
+                    </p>
+                    <p class="author">— 30대 직장인</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>
+                        교회는 처음이었어요. 목장모임에서 만난 분들이 저를 있는 그대로 받아주셔서 
+                        신앙생활을 시작할 수 있었어요. 
+                        아직 잘 모르지만, 이분들과 함께라면 괜찮을 것 같아요.
+                    </p>
+                    <p class="author">— 새신자</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>
+                        시애틀에 이사 온 지 6개월 됐을 때 우연히 초대받았어요. 
+                        솔직히 기대 안 했는데, 지금은 이 사람들이 제 시애틀 가족이에요. 
+                        힘들 때 전화할 수 있는 사람들이 생겼어요.
+                    </p>
+                    <p class="author">— 이민 1년차</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">자주 묻는 질문</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">무엇을 준비해야 하나요?</div>
+                <div class="faq-answer">아무것도 준비 안 하셔도 됩니다. 처음엔 빈손으로 오세요. 편한 마음이 가장 중요합니다.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">교회가 처음인데 괜찮나요?</div>
+                <div class="faq-answer">전혀 문제없습니다! 믿음을 강요하지 않아요. 따뜻한 사람들과 밥 먹고 이야기하는 것부터 시작하면 됩니다.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">꼭 말을 해야 하나요?</div>
+                <div class="faq-answer">아니요. 듣기만 하셔도 괜찮아요. 말하고 싶을 때 자연스럽게 하시면 됩니다. 억지로 시키지 않습니다.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">매주 꼭 가야 하나요?</div>
+                <div class="faq-answer">가능하면 매주 오시면 좋지만, 사정이 있으면 언제든 쉬셔도 됩니다. 부담 갖지 마세요.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">몇 시간이나 걸리나요?</div>
+                <div class="faq-answer">보통 2시간 정도입니다. 처음 오시는 분이 있으면 조금 더 짧게 합니다. 너무 늦지 않게 배려합니다.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">아이들은 어떻게 하나요?</div>
+                <div class="faq-answer">아이들도 함께 와요! 식사 후에는 아이들끼리 놀고, 어른들은 편하게 이야기합니다.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>한번 경험해보시겠어요?</h2>
+            <p>
+                부담 없이 먼저 한 번 방문해보세요.<br>
+                마음에 들면 계속 오시고, 아니면 그만두셔도 괜찮아요.<br>
+                <strong>언제든 환영합니다.</strong>
+            </p>
+            <div class="cta-buttons">
+                <a href="http://www.ijiguchon.org/main.php?step1=3&sid=50" class="cta-btn">📧 목장 참여 문의하기</a>
+                <a href="http://www.ijiguchon.org/main.php?step1=1&sid=20" class="cta-btn">📍 주일예배 안내</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
